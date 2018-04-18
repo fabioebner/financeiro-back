@@ -1,0 +1,17 @@
+package br.com.lumera.financeiroback.config;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Component
+public class MvcConfig implements WebMvcConfigurer {
+    private static Logger logger = LoggerFactory.getLogger(MvcConfig.class.getName());
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        logger.info("Adicionando CORS");
+        registry.addMapping("/login/").allowedOrigins("http://localhost:8081");
+    }
+}

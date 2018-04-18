@@ -2,6 +2,8 @@ package br.com.lumera.financeiroback.config;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -13,7 +15,7 @@ import java.sql.SQLException;
 
 @Component
 public class SchemaPerTenantConnectionProvider implements MultiTenantConnectionProvider {
-
+    private static Logger logger = LoggerFactory.getLogger(SchemaPerTenantConnectionProvider.class.getName());
 
     @Autowired
     private FlywayConf flywayConf;
@@ -30,7 +32,7 @@ public class SchemaPerTenantConnectionProvider implements MultiTenantConnectionP
             flywayConf.migrate(this.dataSource, locationPublic, "public");
             ResultSet retorno = dataSource.getConnection().createStatement().executeQuery("select schema_name from information_schema.schemata where schema_name ilike 'db_%'");
             while(retorno.next()){
-                System.out.println(retorno.getString("schema_name"));
+                logger.info("migrando db: "+ retorno.getString("schema_name"));
                 flywayConf.migrate(this.dataSource, locationPrivate, retorno.getString("schema_name"));
             }
         } catch (SQLException e) {

@@ -1,17 +1,19 @@
 package br.com.lumera.financeiroback.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/loginnn")
+@RequestMapping("/login")
 public class LoginController {
 
     @GetMapping("/")
     public String login(){
         return "foi Login";
+    }
+
+    @PostMapping("/")
+    public boolean login(String username, String password){
+        return true;
     }
 
 

@@ -32,13 +32,13 @@ public class UsuarioDetailService implements UserDetailsService {
     @Autowired
     private PermissaoRepository permissaoRepository;
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        System.out.println(passwordEncoder.encode("1234"));
-        log.info("Verificando login: " + email);
-        Usuario usuario = usuarioRepository.findByEmail(email);
+        log.info("Verificando login: " + username);
+        Usuario usuario = usuarioRepository.findByEmail(username);
         if(usuario == null){
             log.info("Verificando login: Não encontrado" );
-            throw new UsernameNotFoundException("Usuario: " + email + " não encontrado");
+            throw new UsernameNotFoundException("Usuario: " + username + " não encontrado");
         }
         List<Permissao> rolesList = permissaoRepository.findByIdUser(usuario.getId());
         List<GrantedAuthority> permissoes = new ArrayList<>();

@@ -1,7 +1,10 @@
 package br.com.lumera.financeiroback.config;
 
+import br.com.lumera.financeiroback.entity.Usuario;
+import br.com.lumera.financeiroback.repository.UsuarioRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 
@@ -17,8 +20,10 @@ public class TokenAuthenticationService {
     static final String TOKEN_PREFIX = "Bearer";
     static final String HEADER_STRING = "Authorization";
 
-    static void addAuthentication(HttpServletResponse response, String username) {
-        String JWT = Jwts.builder()
+
+    static void addAuthentication(HttpServletResponse response, String username, HttpServletRequest request) {
+        Usuario usuario =BeanLocator.find(UsuarioRepository.class).findByEmail(username);
+        String JWT = Jwts.builder().claim("schema",usuario.getInstituicao().getNomeSchema())
                 .setSubject(username)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET)
@@ -32,14 +37,21 @@ public class TokenAuthenticationService {
 
         if (token != null) {
             // faz parse do token
+            //TODO http://andreybleme.com/2017-04-01/autenticacao-com-jwt-no-spring-boot/
+            String schema = Jwts.parser()
+                    .setSigningKey(SECRET)
+                    .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
+                    .getBody().get("schema").toString();
+
             String user = Jwts.parser()
                     .setSigningKey(SECRET)
                     .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
                     .getBody()
                     .getSubject();
 
+
             if (user != null) {
-                return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
+                return new UsernamePasswordAuthenticationToken(user, schema, Collections.emptyList());
             }
         }
         return null;

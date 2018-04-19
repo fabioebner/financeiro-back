@@ -34,6 +34,7 @@ public class HibernateConfig {
         Map<String, Object> jpaProperties = new HashMap<>();
         jpaProperties.put(Environment.MULTI_TENANT, MultiTenancyStrategy.SCHEMA);
         jpaProperties.put(Environment.MULTI_TENANT_CONNECTION_PROVIDER, multiTenantConnectionProvider);
+
         jpaProperties.put(Environment.MULTI_TENANT_IDENTIFIER_RESOLVER, tenantIdentifierResolver);
         jpaProperties.put(Environment.FORMAT_SQL, true);
 

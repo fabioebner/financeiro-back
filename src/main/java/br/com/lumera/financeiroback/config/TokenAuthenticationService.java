@@ -15,15 +15,17 @@ import java.util.Date;
 
 public class TokenAuthenticationService {
     // EXPIRATION_TIME = 10 dias
-    static final long EXPIRATION_TIME = 860_000_000;
-    static final String SECRET = "MySecret";
-    static final String TOKEN_PREFIX = "Bearer";
-    static final String HEADER_STRING = "Authorization";
+    public static final long EXPIRATION_TIME = 860_000_000;
+    public static final String SECRET = "MySecret";
+    public static final String TOKEN_PREFIX = "Bearer";
+    public static final String HEADER_STRING = "Authorization";
 
 
     static void addAuthentication(HttpServletResponse response, String username, HttpServletRequest request) {
         Usuario usuario =BeanLocator.find(UsuarioRepository.class).findByEmail(username);
         String JWT = Jwts.builder().claim("schema",usuario.getInstituicao().getNomeSchema())
+                .claim("usuarioId",usuario.getId())
+                .claim("instituicaoId",usuario.getInstituicao().getId())
                 .setSubject(username)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET)

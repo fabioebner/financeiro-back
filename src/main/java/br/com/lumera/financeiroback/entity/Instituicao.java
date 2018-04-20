@@ -1,5 +1,8 @@
 package br.com.lumera.financeiroback.entity;
 
+import br.com.lumera.financeiroback.view.View;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
@@ -7,9 +10,11 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "tb_instituicao", schema = "public")
 public class Instituicao extends  AbstractEntity{
+    @JsonView(View.Bootstrap.class)
     private String nome;
     @OneToOne(fetch= FetchType.EAGER)
     @PrimaryKeyJoinColumn
+    @JsonView(View.Bootstrap.class)
     private TipoInstituicao tipo;
     private LocalDateTime cadastro;
     @NotEmpty

@@ -12,10 +12,11 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         logger.info("Adicionando CORS");
-        registry.addMapping("/**").allowedOrigins("http://localhost:8081");
-//        registry.addMapping("/**").allowCredentials(true);
-//        registry.addMapping("/**").allowedMethods("POST", "GET", "HEAD", "OPTIONS", "PUT", "DELETE","UPDATE");
-//        registry.addMapping("/**").allowedHeaders("*");
+        registry.addMapping("/**").allowedOrigins("http://localhost:8080");
+        registry.addMapping("/**").allowCredentials(true);
+        registry.addMapping("/**").allowedMethods("POST", "GET", "HEAD", "OPTIONS", "PUT", "DELETE","UPDATE");
+        registry.addMapping("/**").allowedHeaders("Content-Type", "Access-Control-Allow-Headers", "Authorization", "X-Requested-With");
+        registry.addMapping("/**").exposedHeaders("Authorization","Pragma");
 
     }
 }

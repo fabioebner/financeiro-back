@@ -62,3 +62,4 @@ CREATE TABLE tb_movimentacao_protocolo_servico_custas
   custas9 numeric(15,2),
   custas10 numeric(15,2)
 );
+

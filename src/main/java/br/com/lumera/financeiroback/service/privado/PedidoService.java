@@ -1,10 +1,9 @@
-package br.com.lumera.financeiroback.service;
+package br.com.lumera.financeiroback.service.privado;
 
 import br.com.lumera.financeiroback.entity.privado.Pedido;
 import br.com.lumera.financeiroback.entity.privado.ViewPedido;
-import br.com.lumera.financeiroback.repository.PedidoRepository;
+import br.com.lumera.financeiroback.repository.privado.PedidoRepository;
 import br.com.lumera.financeiroback.repository.ViewPedidoRepository;
-import br.com.lumera.financeiroback.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

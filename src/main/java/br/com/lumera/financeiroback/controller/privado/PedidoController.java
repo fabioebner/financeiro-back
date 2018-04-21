@@ -1,9 +1,8 @@
-package br.com.lumera.financeiroback.controller;
+package br.com.lumera.financeiroback.controller.privado;
 
-import br.com.lumera.financeiroback.config.MvcConfig;
 import br.com.lumera.financeiroback.entity.privado.Pedido;
 import br.com.lumera.financeiroback.entity.privado.ViewPedido;
-import br.com.lumera.financeiroback.service.PedidoService;
+import br.com.lumera.financeiroback.service.privado.PedidoService;
 import br.com.lumera.financeiroback.util.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

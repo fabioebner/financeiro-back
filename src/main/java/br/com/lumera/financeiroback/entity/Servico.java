@@ -7,13 +7,15 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tb_servico")
+@Table(name = "tb_servico", schema = "public")
 public class Servico extends AbstractEntity{
     @NotEmpty
     private String nome;
     @NotEmpty
+    @Column(name = "tabela_custa")
     private String tabelaCusta;
     @NotNull
+    @Column(name = "deposito_previo")
     private boolean depositoPrevio;
     @NotNull
     private boolean certidao;

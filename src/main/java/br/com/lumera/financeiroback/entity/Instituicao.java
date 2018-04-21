@@ -12,10 +12,6 @@ import java.time.LocalDateTime;
 public class Instituicao extends  AbstractEntity{
     @JsonView(View.Bootstrap.class)
     private String nome;
-    @OneToOne(fetch= FetchType.EAGER)
-    @PrimaryKeyJoinColumn
-    @JsonView(View.Bootstrap.class)
-    private TipoInstituicao tipo;
     private LocalDateTime cadastro;
     @NotEmpty
     @Column(name = "nome_schema")
@@ -27,14 +23,6 @@ public class Instituicao extends  AbstractEntity{
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public TipoInstituicao getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoInstituicao tipo) {
-        this.tipo = tipo;
     }
 
     public LocalDateTime getCadastro() {

@@ -2,6 +2,7 @@ package br.com.lumera.financeiroback.entity.privado;
 
 import br.com.lumera.financeiroback.entity.AbstractEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -12,8 +13,10 @@ import java.math.BigDecimal;
 @Table(name = "tb_protocolo_servico_custas")
 public class ProtocoloServicoCustas extends AbstractEntity {
     @NotNull
+    @Column(name = "valor_Base")
     private BigDecimal valorBase;
     @NotEmpty
+    @Column(name = "tabela_custa")
     private String tabelaCusta;
     @NotNull
     private Long quantidade;

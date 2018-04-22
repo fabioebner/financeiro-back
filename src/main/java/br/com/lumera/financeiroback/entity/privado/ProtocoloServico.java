@@ -13,6 +13,7 @@ import java.util.Set;
 public class ProtocoloServico extends AbstractEntity {
 
     @NotNull
+    @Column(name = "valor_base")
     private BigDecimal valorBase;
     @OneToOne
     @NotNull

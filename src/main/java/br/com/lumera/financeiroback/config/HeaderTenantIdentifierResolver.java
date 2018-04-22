@@ -28,10 +28,9 @@ public class HeaderTenantIdentifierResolver implements CurrentTenantIdentifierRe
     public String resolveCurrentTenantIdentifier() {
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         if(requestAttributes != null) {
-            logger.info("Verificando se tem usuario logado");
             Principal usuarioLogado = ((ServletRequestAttributes) requestAttributes).getRequest().getUserPrincipal();
             if (usuarioLogado != null) {
-                logger.info("retornando nome do schema: " + ((UsernamePasswordAuthenticationToken) usuarioLogado).getCredentials().toString());
+                logger.info("schema do usuario: " + ((UsernamePasswordAuthenticationToken) usuarioLogado).getCredentials().toString());
                 return ((UsernamePasswordAuthenticationToken) usuarioLogado).getCredentials().toString();
             }
         }

@@ -15,7 +15,7 @@ public class FlywayConf {
         Flyway flyway = new Flyway();
         flyway.setDataSource(datasource);
         flyway.setBaselineOnMigrate(true);
-        flyway.setValidateOnMigrate(true);
+        flyway.setValidateOnMigrate(false);
         flyway.setSqlMigrationPrefix("V");
         flyway.setLocations(locations);
         flyway.setSchemas(schema);

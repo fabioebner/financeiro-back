@@ -27,7 +27,7 @@ SELECT ped.*,
         coalesce(custas9,0)+
         coalesce(custas10,0)) FROM tb_movimentacao_protocolo_servico mps
       JOIN tb_movimentacao_protocolo_servico_custas mpsc ON mpsc.movimentacao_protocolo_servico_id = mps.id
-
+	and mps.protocolo_id = mpp.protocolo_id
     ) as pago
      FROM tb_movimentacao_pedido_protocolo mpp
     WHERE protocolo_id = prot.id
@@ -63,7 +63,7 @@ WHERE
         coalesce(custas9,0)+
         coalesce(custas10,0)) FROM tb_movimentacao_protocolo_servico mps
       JOIN tb_movimentacao_protocolo_servico_custas mpsc ON mpsc.movimentacao_protocolo_servico_id = mps.id
-
+	and mps.protocolo_id = mpp.protocolo_id
     ) as pago
      FROM tb_movimentacao_pedido_protocolo mpp
     WHERE protocolo_id = prot.id

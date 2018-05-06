@@ -3,6 +3,7 @@ package br.com.lumera.financeiroback.entity.privado;
 import br.com.lumera.financeiroback.entity.AbstractEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -19,6 +20,9 @@ public class Pedido extends AbstractEntity {
     @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinColumn(name="pedido_id")
     private Set<Protocolo> protocolos;
+    @OneToOne
+    @NotNull
+    private Cliente cliente;
 
     public LocalDateTime getCriado() {
         return criado;
@@ -66,6 +70,14 @@ public class Pedido extends AbstractEntity {
 
     public void setProtocolos(Set<Protocolo> protocolos) {
         this.protocolos = protocolos;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
 

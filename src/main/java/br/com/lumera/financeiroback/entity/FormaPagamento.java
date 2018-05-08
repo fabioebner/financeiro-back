@@ -16,4 +16,9 @@ public class FormaPagamento extends  AbstractEntity{
         this.nome = nome;
     }
 
+    public FormaPagamento() {
+    }
+    public FormaPagamento(Long id) {
+        this.setId(id);
+    }
 }

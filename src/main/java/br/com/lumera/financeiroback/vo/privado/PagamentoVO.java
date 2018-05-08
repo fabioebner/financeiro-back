@@ -3,16 +3,16 @@ package br.com.lumera.financeiroback.vo.privado;
 import java.math.BigDecimal;
 
 public class PagamentoVO {
-    private Integer id;
+    private Long id;
     private String nome;
     //http://www.baeldung.com/java-money-and-currency
     private BigDecimal valorInformado;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

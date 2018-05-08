@@ -23,21 +23,23 @@ CREATE TABLE tb_movimentacao(
     vl_desconto_custa7 numeric(15,2) NOT NULL DEFAULT 0,
     vl_desconto_custa8 numeric(15,2) NOT NULL DEFAULT 0,
     vl_desconto_custa9 numeric(15,2) NOT NULL DEFAULT 0,
-    vl_desconto_custa10 numeric(15,2) NOT NULL DEFAULT 0
+    vl_desconto_custa10 numeric(15,2) NOT NULL DEFAULT 0,
+    cliente_id BIGINT REFERENCES tb_cliente(id),
+    usuario_id BIGINT REFERENCES public.tb_usuario(id) NOT NULL
 );
 
 
 CREATE TABLE tb_movimentacao_pedido_protocolo(
     id SERIAL PRIMARY KEY,
-    movimentacao_id BIGINT REFERENCES tb_movimentacao(id),
+    movimentacao_id BIGINT REFERENCES tb_movimentacao(id) NOT NULL,
     pedido_id BIGINT REFERENCES tb_pedido(id),
-    protocolo_id VARCHAR(250) REFERENCES tb_protocolo(id)
+    protocolo_id VARCHAR(250) REFERENCES tb_protocolo(id) NOT NULL
 );
 
 CREATE TABLE tb_movimentacao_protocolo_servico
 (
   id SERIAL PRIMARY KEY,
-  movimentacao_pedido_protocolo_id BIGINT REFERENCES tb_movimentacao_pedido_protocolo(id),
+  movimentacao_pedido_protocolo_id BIGINT REFERENCES tb_movimentacao_pedido_protocolo(id) NOT NULL,
   protocolo_id VARCHAR(250) REFERENCES tb_protocolo(id),
   valor_base numeric(15,2) NOT NULL DEFAULT 0,
   forma_calculo_id bigint NOT NULL,
@@ -47,7 +49,7 @@ CREATE TABLE tb_movimentacao_protocolo_servico
 CREATE TABLE tb_movimentacao_protocolo_servico_custas
 (
   id SERIAL PRIMARY KEY,
-  movimentacao_protocolo_servico_id BIGINT REFERENCES tb_movimentacao_protocolo_servico(id),
+  movimentacao_protocolo_servico_id BIGINT REFERENCES tb_movimentacao_protocolo_servico(id) NOT NULL,
   valor_base numeric(15,2),
   tabela_custa character varying(250) NOT NULL,
   quantidade bigint DEFAULT 0,
@@ -62,4 +64,11 @@ CREATE TABLE tb_movimentacao_protocolo_servico_custas
   custas9 numeric(15,2),
   custas10 numeric(15,2)
 );
+
+CREATE TABLE tb_movimentacao_pagamento(
+  id SERIAL PRIMARY KEY,
+  movimentacao_id BIGINT REFERENCES tb_movimentacao(id) NOT NULL,
+  valor NUMERIC(13,2) NOT NULL,
+  forma_pagamento_id BIGINT REFERENCES public.tb_forma_pagamento(id) NOT NULL
+)
 

@@ -30,6 +30,13 @@ public class Protocolo {
     @JoinColumn(name="protocolo_id")
     private Set<ProtocoloServico> servicos;
 
+    public Protocolo(String id) {
+        this.id = id;
+    }
+
+    public Protocolo() {
+    }
+
     public String getId() {
         return id;
     }

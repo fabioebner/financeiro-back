@@ -21,7 +21,6 @@ public class Pedido extends AbstractEntity {
     @JoinColumn(name="pedido_id")
     private Set<Protocolo> protocolos;
     @OneToOne
-    @NotNull
     private Cliente cliente;
 
     public LocalDateTime getCriado() {

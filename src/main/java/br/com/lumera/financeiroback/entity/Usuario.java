@@ -22,6 +22,11 @@ public class Usuario extends  AbstractEntity{
     @JsonView(View.Bootstrap.class)
     private Instituicao instituicao;
 
+    public Usuario() {
+    }
+    public Usuario(Long id) {
+        this.setId(id);
+    }
 
     public String getNome() {
         return nome;

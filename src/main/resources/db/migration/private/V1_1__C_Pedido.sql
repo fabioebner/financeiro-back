@@ -4,5 +4,6 @@ CREATE TABLE tb_pedido(
   criado TIMESTAMP without time zone,
   identificacao VARCHAR(250),
   apresentante  VARCHAR(250),
-  apresentante_documento VARCHAR(250)
+  apresentante_documento VARCHAR(250),
+  cliente_id BIGINT REFERENCES tb_pedido(id)
 );

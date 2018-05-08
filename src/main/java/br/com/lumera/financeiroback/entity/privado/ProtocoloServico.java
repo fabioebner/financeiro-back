@@ -15,6 +15,9 @@ public class ProtocoloServico extends AbstractEntity {
     @NotNull
     @Column(name = "valor_base")
     private BigDecimal valorBase;
+    @NotNull
+    @Column(name = "forma_calculo_id")
+    private Long formaCalculo;
     @OneToOne
     @NotNull
     private Servico servico;
@@ -44,5 +47,13 @@ public class ProtocoloServico extends AbstractEntity {
 
     public void setCustas(Set<ProtocoloServicoCustas> custas) {
         this.custas = custas;
+    }
+
+    public Long getFormaCalculo() {
+        return formaCalculo;
+    }
+
+    public void setFormaCalculo(Long formaCalculo) {
+        this.formaCalculo = formaCalculo;
     }
 }

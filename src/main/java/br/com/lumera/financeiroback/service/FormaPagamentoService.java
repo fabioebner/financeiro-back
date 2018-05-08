@@ -16,4 +16,8 @@ public class FormaPagamentoService {
     public List<FormaPagamento> findAll(){
         return formaPagamentoRepository.findAll(Sort.by("nome"));
     }
+
+    public FormaPagamento findOne(Long id) {
+        return formaPagamentoRepository.findById(id).get();
+    }
 }

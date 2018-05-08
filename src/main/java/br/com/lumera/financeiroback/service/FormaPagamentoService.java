@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FormaPagamentoService {
@@ -18,6 +19,9 @@ public class FormaPagamentoService {
     }
 
     public FormaPagamento findOne(Long id) {
-        return formaPagamentoRepository.findById(id).get();
+        Optional<FormaPagamento> retorno = formaPagamentoRepository.findById(id);
+        if(retorno.isPresent())
+            return retorno.get();
+        return null;
     }
 }

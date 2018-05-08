@@ -37,7 +37,7 @@ public class HibernateConfig {
 
         jpaProperties.put(Environment.MULTI_TENANT_IDENTIFIER_RESOLVER, tenantIdentifierResolver);
         jpaProperties.put(Environment.FORMAT_SQL, true);
-        jpaProperties.put(Environment.SHOW_SQL, true);
+        jpaProperties.put(Environment.SHOW_SQL, false);
 
         em.setJpaPropertyMap(jpaProperties);
         return em;

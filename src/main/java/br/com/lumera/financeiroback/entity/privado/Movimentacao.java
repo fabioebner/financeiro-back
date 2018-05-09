@@ -22,26 +22,6 @@ public class Movimentacao extends AbstractEntity {
     private String apresentanteDocumento;
     @Column(name = "vl_troco")
     private BigDecimal vlTroco;
-    @Column(name = "vl_devolucao_custa1")
-    private BigDecimal vlDevolucaoCustas1;
-    @Column(name = "vl_devolucao_custa2")
-    private BigDecimal vlDevolucaoCusta2;
-    @Column(name = "vl_devolucao_custa3")
-    private BigDecimal vlDevolucaoCusta3;
-    @Column(name = "vl_devolucao_custa4")
-    private BigDecimal vlDevolucaoCusta4;
-    @Column(name = "vl_devolucao_custa5")
-    private BigDecimal vlDevolucaoCusta5;
-    @Column(name = "vl_devolucao_custa6")
-    private BigDecimal vlDevolucaoCusta6;
-    @Column(name = "vl_devolucao_custa7")
-    private BigDecimal vlDevolucaoCusta7;
-    @Column(name = "vl_devolucao_custa8")
-    private BigDecimal vlDevolucaoCusta8;
-    @Column(name = "vl_devolucao_custa9")
-    private BigDecimal vlDevolucaoCusta9;
-    @Column(name = "vl_devolucao_custa10")
-    private BigDecimal vlDevolucaoCusta10;
     @Column(name = "vl_desconto_custa1")
     private BigDecimal vlDescontoCusta1;
     @Column(name = "vl_desconto_custa2")
@@ -77,22 +57,12 @@ public class Movimentacao extends AbstractEntity {
     private Set<MovimentacaoPagamento> pagamentos;
 
 
-    public Movimentacao(@NotNull LocalDateTime criado, Cliente cliente, String apresentante, String apresentanteDocumento, BigDecimal vlTroco, BigDecimal vlDevolucaoCustas1, BigDecimal vlDevolucaoCusta2, BigDecimal vlDevolucaoCusta3, BigDecimal vlDevolucaoCusta4, BigDecimal vlDevolucaoCusta5, BigDecimal vlDevolucaoCusta6, BigDecimal vlDevolucaoCusta7, BigDecimal vlDevolucaoCusta8, BigDecimal vlDevolucaoCusta9, BigDecimal vlDevolucaoCusta10, BigDecimal vlDescontoCusta1, BigDecimal vlDescontoCusta2, BigDecimal vlDescontoCusta3, BigDecimal vlDescontoCusta4, BigDecimal vlDescontoCusta5, BigDecimal vlDescontoCusta6, BigDecimal vlDescontoCusta7, BigDecimal vlDescontoCusta8, BigDecimal vlDescontoCusta9, BigDecimal vlDescontoCusta10, @NotNull Usuario usuario, Set<MovimentacaoPedidoProtocolo> pedidoProtocolo, Set<MovimentacaoPagamento> pagamentos ) {
+    public Movimentacao(@NotNull LocalDateTime criado, Cliente cliente, String apresentante, String apresentanteDocumento, BigDecimal vlTroco,  BigDecimal vlDescontoCusta1, BigDecimal vlDescontoCusta2, BigDecimal vlDescontoCusta3, BigDecimal vlDescontoCusta4, BigDecimal vlDescontoCusta5, BigDecimal vlDescontoCusta6, BigDecimal vlDescontoCusta7, BigDecimal vlDescontoCusta8, BigDecimal vlDescontoCusta9, BigDecimal vlDescontoCusta10, @NotNull Usuario usuario, Set<MovimentacaoPedidoProtocolo> pedidoProtocolo, Set<MovimentacaoPagamento> pagamentos ) {
         this.criado = criado;
         this.apresentante = apresentante;
         this.cliente = cliente;
         this.apresentanteDocumento = apresentanteDocumento;
         this.vlTroco = vlTroco;
-        this.vlDevolucaoCustas1 = vlDevolucaoCustas1;
-        this.vlDevolucaoCusta2 = vlDevolucaoCusta2;
-        this.vlDevolucaoCusta3 = vlDevolucaoCusta3;
-        this.vlDevolucaoCusta4 = vlDevolucaoCusta4;
-        this.vlDevolucaoCusta5 = vlDevolucaoCusta5;
-        this.vlDevolucaoCusta6 = vlDevolucaoCusta6;
-        this.vlDevolucaoCusta7 = vlDevolucaoCusta7;
-        this.vlDevolucaoCusta8 = vlDevolucaoCusta8;
-        this.vlDevolucaoCusta9 = vlDevolucaoCusta9;
-        this.vlDevolucaoCusta10 = vlDevolucaoCusta10;
         this.vlDescontoCusta1 = vlDescontoCusta1;
         this.vlDescontoCusta2 = vlDescontoCusta2;
         this.vlDescontoCusta3 = vlDescontoCusta3;
@@ -141,86 +111,6 @@ public class Movimentacao extends AbstractEntity {
 
     public void setVlTroco(BigDecimal vlTroco) {
         this.vlTroco = vlTroco;
-    }
-
-    public BigDecimal getVlDevolucaoCustas1() {
-        return vlDevolucaoCustas1;
-    }
-
-    public void setVlDevolucaoCustas1(BigDecimal vlDevolucaoCustas1) {
-        this.vlDevolucaoCustas1 = vlDevolucaoCustas1;
-    }
-
-    public BigDecimal getVlDevolucaoCusta2() {
-        return vlDevolucaoCusta2;
-    }
-
-    public void setVlDevolucaoCusta2(BigDecimal vlDevolucaoCusta2) {
-        this.vlDevolucaoCusta2 = vlDevolucaoCusta2;
-    }
-
-    public BigDecimal getVlDevolucaoCusta3() {
-        return vlDevolucaoCusta3;
-    }
-
-    public void setVlDevolucaoCusta3(BigDecimal vlDevolucaoCusta3) {
-        this.vlDevolucaoCusta3 = vlDevolucaoCusta3;
-    }
-
-    public BigDecimal getVlDevolucaoCusta4() {
-        return vlDevolucaoCusta4;
-    }
-
-    public void setVlDevolucaoCusta4(BigDecimal vlDevolucaoCusta4) {
-        this.vlDevolucaoCusta4 = vlDevolucaoCusta4;
-    }
-
-    public BigDecimal getVlDevolucaoCusta5() {
-        return vlDevolucaoCusta5;
-    }
-
-    public void setVlDevolucaoCusta5(BigDecimal vlDevolucaoCusta5) {
-        this.vlDevolucaoCusta5 = vlDevolucaoCusta5;
-    }
-
-    public BigDecimal getVlDevolucaoCusta6() {
-        return vlDevolucaoCusta6;
-    }
-
-    public void setVlDevolucaoCusta6(BigDecimal vlDevolucaoCusta6) {
-        this.vlDevolucaoCusta6 = vlDevolucaoCusta6;
-    }
-
-    public BigDecimal getVlDevolucaoCusta7() {
-        return vlDevolucaoCusta7;
-    }
-
-    public void setVlDevolucaoCusta7(BigDecimal vlDevolucaoCusta7) {
-        this.vlDevolucaoCusta7 = vlDevolucaoCusta7;
-    }
-
-    public BigDecimal getVlDevolucaoCusta8() {
-        return vlDevolucaoCusta8;
-    }
-
-    public void setVlDevolucaoCusta8(BigDecimal vlDevolucaoCusta8) {
-        this.vlDevolucaoCusta8 = vlDevolucaoCusta8;
-    }
-
-    public BigDecimal getVlDevolucaoCusta9() {
-        return vlDevolucaoCusta9;
-    }
-
-    public void setVlDevolucaoCusta9(BigDecimal vlDevolucaoCusta9) {
-        this.vlDevolucaoCusta9 = vlDevolucaoCusta9;
-    }
-
-    public BigDecimal getVlDevolucaoCusta10() {
-        return vlDevolucaoCusta10;
-    }
-
-    public void setVlDevolucaoCusta10(BigDecimal vlDevolucaoCusta10) {
-        this.vlDevolucaoCusta10 = vlDevolucaoCusta10;
     }
 
     public BigDecimal getVlDescontoCusta1() {

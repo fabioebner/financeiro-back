@@ -68,7 +68,19 @@ public class MovimentacaoController {
                     }
                     movimentacaoProtocoloServicos.add(MovimentacaoProtocoloServico.cloneFromProtocoloServico(protocoloServico, movimentacaoProtocoloServicoCustas, protocolo.getId()));
                 }
-                pedidoProtocolos.add(new MovimentacaoPedidoProtocolo(pedidoSelecionado, protocolo, movimentacaoProtocoloServicos, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
+                CustasAnteriorVO custasAnteriorVO = movimentacaoService.findCustasAnteriorByProtocolo(protocolo.getId());
+                pedidoProtocolos.add(new MovimentacaoPedidoProtocolo(pedidoSelecionado, protocolo, movimentacaoProtocoloServicos,
+                        custasAnteriorVO.getCustas1(),
+                        custasAnteriorVO.getCustas2(),
+                        custasAnteriorVO.getCustas3(),
+                        custasAnteriorVO.getCustas4(),
+                        custasAnteriorVO.getCustas5(),
+                        custasAnteriorVO.getCustas6(),
+                        custasAnteriorVO.getCustas7(),
+                        custasAnteriorVO.getCustas8(),
+                        custasAnteriorVO.getCustas9(),
+                        custasAnteriorVO.getCustas10()
+                ));
             }
         }
 

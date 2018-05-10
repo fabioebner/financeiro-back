@@ -4,6 +4,7 @@ import org.hibernate.MultiTenancyStrategy;
 import org.hibernate.cfg.Environment;
 import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -16,6 +17,8 @@ import java.util.Map;
 
 @Configuration
 public class HibernateConfig {
+    @Value("${spring.jpa.properties.hibernate.show_sql}")
+    private boolean showSql = false;
 
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
@@ -37,7 +40,8 @@ public class HibernateConfig {
 
         jpaProperties.put(Environment.MULTI_TENANT_IDENTIFIER_RESOLVER, tenantIdentifierResolver);
         jpaProperties.put(Environment.FORMAT_SQL, true);
-        jpaProperties.put(Environment.SHOW_SQL, false);
+        jpaProperties.put(Environment.SHOW_SQL, showSql);
+
 
         em.setJpaPropertyMap(jpaProperties);
         return em;

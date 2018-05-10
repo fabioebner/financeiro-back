@@ -45,7 +45,7 @@ public class MovimentacaoPedidoProtocolo extends AbstractEntity {
     private BigDecimal vlDevolucaoCusta10;
 
 
-    public MovimentacaoPedidoProtocolo(@NotNull Pedido pedido, @NotNull Protocolo protocolo, Set<MovimentacaoProtocoloServico> servicos, BigDecimal vlDevolucaoCustas1, BigDecimal vlDevolucaoCusta2, BigDecimal vlDevolucaoCusta3, BigDecimal vlDevolucaoCusta4, BigDecimal vlDevolucaoCusta5, BigDecimal vlDevolucaoCusta6, BigDecimal vlDevolucaoCusta7, BigDecimal vlDevolucaoCusta8, BigDecimal vlDevolucaoCusta9, BigDecimal vlDevolucaoCusta10) {
+    public MovimentacaoPedidoProtocolo(Pedido pedido, Protocolo protocolo, Set<MovimentacaoProtocoloServico> servicos, BigDecimal vlDevolucaoCustas1, BigDecimal vlDevolucaoCusta2, BigDecimal vlDevolucaoCusta3, BigDecimal vlDevolucaoCusta4, BigDecimal vlDevolucaoCusta5, BigDecimal vlDevolucaoCusta6, BigDecimal vlDevolucaoCusta7, BigDecimal vlDevolucaoCusta8, BigDecimal vlDevolucaoCusta9, BigDecimal vlDevolucaoCusta10) {
         this.pedido = pedido;
         this.protocolo = protocolo;
         this.servicos = servicos;

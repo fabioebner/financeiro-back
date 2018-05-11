@@ -3,6 +3,7 @@ package br.com.lumera.financeiroback.service;
 import br.com.lumera.financeiroback.entity.Servico;
 import br.com.lumera.financeiroback.repository.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -22,7 +23,7 @@ public class ServicoService {
         return servicoRepository.findAll();
     }
 
-    public List<Servico> findByCartorioNatureza(Long cartorioNatureza, Pageable page) {
+    public Page<Servico> findByCartorioNatureza(Long cartorioNatureza, Pageable page) {
         return servicoRepository.findByCartorioNatureza(cartorioNatureza, page);
     }
 }

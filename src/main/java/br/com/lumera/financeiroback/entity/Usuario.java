@@ -1,10 +1,12 @@
 package br.com.lumera.financeiroback.entity;
 
 import br.com.lumera.financeiroback.view.View;
+import br.com.lumera.financeiroback.vo.FormaCalculo;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_usuario", schema = "public")
@@ -21,6 +23,7 @@ public class Usuario extends  AbstractEntity{
     @OneToOne(fetch= FetchType.EAGER)
     @JsonView(View.Bootstrap.class)
     private Instituicao instituicao;
+
 
     public Usuario() {
     }
@@ -75,4 +78,5 @@ public class Usuario extends  AbstractEntity{
     public void setInstituicao(Instituicao instituicao) {
         this.instituicao = instituicao;
     }
+
 }

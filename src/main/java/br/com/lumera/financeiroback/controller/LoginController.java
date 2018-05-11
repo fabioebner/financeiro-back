@@ -1,6 +1,7 @@
 package br.com.lumera.financeiroback.controller;
 
 import br.com.lumera.financeiroback.entity.Usuario;
+import br.com.lumera.financeiroback.service.TabelaCustaService;
 import br.com.lumera.financeiroback.service.UsuarioService;
 import br.com.lumera.financeiroback.util.TokenUtil;
 import br.com.lumera.financeiroback.view.View;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-    @Autowired
-    TokenUtil tokenUtil;
+    @Autowired private TokenUtil tokenUtil;
+    @Autowired private TabelaCustaService tabelaCustaService;
 
     @Autowired
     private UsuarioService usuarioService;
@@ -33,9 +34,10 @@ public class LoginController {
 
     @JsonView(View.Bootstrap.class)
     @GetMapping("/bootstrap/")
-    public Usuario bootstrapApplicacao(){
+    public Usuario bootstrapApplicacao() throws Exception {
         Long usuarioId = Long.parseLong(tokenUtil.recuperarVariavelToken("usuarioId").toString());
-        return usuarioService.findById(usuarioId);
+        Usuario retorno =  usuarioService.findById(usuarioId);
+        return retorno;
     }
 
 }

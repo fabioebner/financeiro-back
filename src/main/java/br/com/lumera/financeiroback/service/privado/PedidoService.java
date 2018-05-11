@@ -1,5 +1,6 @@
 package br.com.lumera.financeiroback.service.privado;
 
+import br.com.lumera.financeiroback.controller.exceptions.NotFoundException;
 import br.com.lumera.financeiroback.entity.privado.Pedido;
 import br.com.lumera.financeiroback.entity.privado.ViewPedido;
 import br.com.lumera.financeiroback.repository.privado.PedidoRepository;
@@ -26,7 +27,8 @@ public class PedidoService {
         if (retorno.isPresent()) {
             return retorno.get();
         } else{
-            return null;
+            throw new NotFoundException("Pedido não encontrado: " + id);
         }
+
     }
 }

@@ -16,6 +16,9 @@ public class Instituicao extends  AbstractEntity{
     @NotEmpty
     @Column(name = "nome_schema")
     private String nomeSchema;
+    @Column(name = "estado")
+    @NotEmpty
+    private String estado;
 
     public String getNome() {
         return nome;
@@ -39,5 +42,13 @@ public class Instituicao extends  AbstractEntity{
 
     public void setNomeSchema(String nomeSchema) {
         this.nomeSchema = nomeSchema;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

@@ -30,8 +30,8 @@ CREATE SCHEMA db_2;
 CREATE SCHEMA db_3;
 
 INSERT INTO tb_instituicao( nome, cadastro, nome_schema, cep, logradouro, numero, bairro, cidade, estado, nr_cnpj,
-nm_tabeliao) VALUES ('Cartorio 1',now(), 'db_1','111380-100','logradouro 1','2','bairro','cidade', 'SP', '12.323.2323/12313-01', 'tabeliao 1');
+nm_tabeliao) VALUES ('Cartorio 1',now(), 'db_1','111380-100','logradouro 1','2','bairro','cidade', 'RN', '12.323.2323/12313-01', 'tabeliao 1');
 INSERT INTO tb_instituicao( nome, cadastro, nome_schema, cep, logradouro, numero, bairro, cidade, estado, nr_cnpj,
-nm_tabeliao) VALUES ('Cartorio 2', now(), 'db_2','111380-100','logradouro 2','3','bairro','cidade', 'SP', '12.323.2323/12313-01', 'tabeliao 2');
+nm_tabeliao) VALUES ('Cartorio 2', now(), 'db_2','111380-100','logradouro 2','3','bairro','cidade', 'RN', '12.323.2323/12313-01', 'tabeliao 2');
 INSERT INTO tb_instituicao( nome, cadastro, nome_schema, cep, logradouro, numero, bairro, cidade, estado, nr_cnpj,
-nm_tabeliao) VALUES ('Cartorio 3 ', now(), 'db_3','111380-100','logradouro 3','4','bairro','cidade', 'SP', '12.323.2323/12313-01', 'tabeliao 3');
+nm_tabeliao) VALUES ('Cartorio 3 ', now(), 'db_3','111380-100','logradouro 3','4','bairro','cidade', 'RN', '12.323.2323/12313-01', 'tabeliao 3');

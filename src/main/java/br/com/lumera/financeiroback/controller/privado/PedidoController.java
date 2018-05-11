@@ -1,5 +1,6 @@
 package br.com.lumera.financeiroback.controller.privado;
 
+import br.com.lumera.financeiroback.controller.exceptions.NotFoundException;
 import br.com.lumera.financeiroback.entity.privado.Pedido;
 import br.com.lumera.financeiroback.entity.privado.ViewPedido;
 import br.com.lumera.financeiroback.service.privado.PedidoService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/pedido")
@@ -32,6 +34,6 @@ public class PedidoController {
     }
     @GetMapping("/{id}")
     public Pedido findBydId(@PathVariable Long id){
-        return pedidoService.findById(id);
+        return  pedidoService.findById(id);
     }
 }

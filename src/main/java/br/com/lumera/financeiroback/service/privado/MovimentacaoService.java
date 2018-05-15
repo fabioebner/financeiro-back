@@ -6,6 +6,7 @@ import br.com.lumera.financeiroback.repository.privado.CustasAnteriorRepository;
 import br.com.lumera.financeiroback.repository.privado.MovimentacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MovimentacaoService {
@@ -18,6 +19,7 @@ public class MovimentacaoService {
         return this.movimentacaoRepository.save(movimentacao);
     }
 
+    @Transactional(readOnly = true)
     public CustasAnteriorVO findCustasAnteriorByProtocolo(String id) {
         return custasAnteriorRepository.findCustasAnteriorByProtocolo(id);
     }

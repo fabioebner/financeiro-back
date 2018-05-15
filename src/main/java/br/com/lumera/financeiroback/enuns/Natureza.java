@@ -17,6 +17,7 @@ public enum Natureza {
         this.id = id;
     }
 
+
     public String getNome() {
         return nome;
     }

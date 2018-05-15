@@ -26,7 +26,7 @@ public class Protocolo {
     private LocalDateTime finalizado;
     @Column(name = "valor_finalizado")
     private BigDecimal valorFinalizado;
-    @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="protocolo_id")
     private Set<ProtocoloServico> servicos;
 

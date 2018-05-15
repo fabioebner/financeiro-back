@@ -9,6 +9,13 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tb_pedido")
+@NamedEntityGraphs({
+    @NamedEntityGraph( name = "Pedido.protocolos", attributeNodes = @NamedAttributeNode("protocolos")),
+    @NamedEntityGraph( name = "GroupInfo.detailWith", attributeNodes = {@NamedAttributeNode(value =  "protocolos", subgraph ="FetchManagers.Subgraph.Servico")},
+        subgraphs = {
+                @NamedSubgraph(name = "FetchManagers.Subgraph.Servico", type = Protocolo.class, attributeNodes = {@NamedAttributeNode(value = "servicos")})
+        })
+})
 public class Pedido extends AbstractEntity {
     private LocalDateTime criado;
     @Column(name = "usuario_id")
@@ -17,7 +24,7 @@ public class Pedido extends AbstractEntity {
     private String apresentante;
     @Column(name = "apresentante_documento")
     private String apresentanteDocumento;
-    @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="pedido_id")
     private Set<Protocolo> protocolos;
     @OneToOne

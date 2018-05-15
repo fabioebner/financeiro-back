@@ -21,7 +21,7 @@ public class ProtocoloServico extends AbstractEntity {
     @OneToOne
     @NotNull
     private Servico servico;
-    @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="protocolo_servico_id")
     private Set<ProtocoloServicoCustas> custas;
 

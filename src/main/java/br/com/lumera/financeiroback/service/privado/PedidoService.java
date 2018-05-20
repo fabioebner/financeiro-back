@@ -32,4 +32,8 @@ public class PedidoService {
         }
 
     }
+
+    public Pedido save(Pedido pedido) {
+        return pedidoRepository.save(pedido);
+    }
 }

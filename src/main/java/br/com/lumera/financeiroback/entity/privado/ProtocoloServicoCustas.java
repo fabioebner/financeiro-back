@@ -31,6 +31,25 @@ public class ProtocoloServicoCustas extends AbstractEntity {
     private BigDecimal custas9;
     private BigDecimal custas10;
 
+    public ProtocoloServicoCustas(@NotNull BigDecimal valorBase, @NotEmpty String tabelaCusta, @NotNull Long quantidade, BigDecimal custas1, BigDecimal custas2, BigDecimal custas3, BigDecimal custas4, BigDecimal custas5, BigDecimal custas6, BigDecimal custas7, BigDecimal custas8, BigDecimal custas9, BigDecimal custas10) {
+        this.valorBase = valorBase;
+        this.tabelaCusta = tabelaCusta;
+        this.quantidade = quantidade;
+        this.custas1 = custas1;
+        this.custas2 = custas2;
+        this.custas3 = custas3;
+        this.custas4 = custas4;
+        this.custas5 = custas5;
+        this.custas6 = custas6;
+        this.custas7 = custas7;
+        this.custas8 = custas8;
+        this.custas9 = custas9;
+        this.custas10 = custas10;
+    }
+
+    public ProtocoloServicoCustas() {
+    }
+
     public BigDecimal getValorBase() {
         return valorBase;
     }

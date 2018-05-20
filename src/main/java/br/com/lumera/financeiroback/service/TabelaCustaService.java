@@ -34,7 +34,7 @@ public class TabelaCustaService {
     }
 
 
-    public RetornoCalculoTabela calcularServico(String estado, String natureza, String tabela, BigDecimal valor, Integer quantidade, Integer cdDivisor, Integer qtdDivisor, LocalDate dtTabela) throws NotFoundException {
+    public RetornoCalculoTabela calcularServico(String estado, String natureza, String tabela, BigDecimal valor, Integer quantidade, Integer cdDivisor, Integer qtdDivisor, LocalDate dtTabela, String nomeServico, Long servicoId, boolean certidao) throws NotFoundException {
         try {
             String urlTabela = null;
             if(dtTabela == null){
@@ -44,6 +44,10 @@ public class TabelaCustaService {
             urlTabela = this.urlTabelaCustas+"/tabelacustas/descritiva?uf="+estado+"&natureza="+natureza+"&tabela="+tabela+"&valor="+valor+"&qtd="+quantidade+"&cdDivisor="+cdDivisor+"&qtdDivisor="+qtdDivisor+"&data="+Utils.formataDataTabelaCustas(dtTabela);
             retorno = restTemplate.getForObject(urlTabela, RetornoCalculoTabela.class);
 
+            retorno.setNatureza(natureza);
+            retorno.setNomeServico(nomeServico);
+            retorno.setCertidao(certidao);
+            retorno.setServicoId(servicoId);
             return retorno;
         } catch (HttpClientErrorException e) {
             throw  new NotFoundException("Erro ao calcular Tabela de custas: Natureza: " + natureza + " , tabela: " + tabela + " , data: "+Utils.formataDataTabelaCustas(dtTabela) + " ,  valor: " + valor);

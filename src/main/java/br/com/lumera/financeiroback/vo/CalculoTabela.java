@@ -12,7 +12,7 @@ public class CalculoTabela {
     private String divisor;
     private Integer codigo;
     private BigDecimal vlBase;
-    private Integer qtd;
+    private Long qtd;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
     private BigDecimal custas1;
@@ -30,7 +30,7 @@ public class CalculoTabela {
     {
     }
 
-    public CalculoTabela(String nmTabela, String divisor, Integer qtd, BigDecimal custas1, BigDecimal custas2, BigDecimal custas3, BigDecimal custas4, BigDecimal custas5, BigDecimal custas6, BigDecimal custas7, BigDecimal custas8, BigDecimal custas9, BigDecimal custas10, LocalDate data, Integer codigo, BigDecimal vlBase)
+    public CalculoTabela(String nmTabela, String divisor, Long qtd, BigDecimal custas1, BigDecimal custas2, BigDecimal custas3, BigDecimal custas4, BigDecimal custas5, BigDecimal custas6, BigDecimal custas7, BigDecimal custas8, BigDecimal custas9, BigDecimal custas10, LocalDate data, Integer codigo, BigDecimal vlBase)
     {
         this.nmTabela = nmTabela;
         this.divisor = divisor;
@@ -174,11 +174,11 @@ public class CalculoTabela {
         this.custas10 = custas10;
     }
 
-    public void setQtd(Integer qtd) {
+    public void setQtd(Long qtd) {
         this.qtd = qtd;
     }
 
-    public Integer getQtd() {
+    public Long getQtd() {
         return this.qtd;
     }
 

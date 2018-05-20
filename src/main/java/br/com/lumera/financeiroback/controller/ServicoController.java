@@ -17,9 +17,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 @RequestMapping("/servico")
@@ -46,13 +43,16 @@ public class ServicoController {
         Servico servico = servicoService.findById(calcularServico.getIdServico());
         Instituicao instituicao = instituicaoService.findById(instituicaoId);
         return tabelaCustaService.calcularServico(instituicao.getEstado(),
-                Natureza.recuperaNome(servico.getCartorioNatureza().intValue()).getNome(),
+                Natureza.findByCodigo(servico.getCartorioNatureza().intValue()).getNome(),
                 servico.getTabelaCusta(),
                 calcularServico.getValorInformado(),
                 calcularServico.getQuantidade(),
                 calcularServico.getDivisorId(),
                 calcularServico.getQuantidadeDivisor(),
-                calcularServico.getDataTabela()
+                calcularServico.getDataTabela(),
+                servico.getNome(),
+                servico.getId(),
+                servico.isCertidao()
         );
     }
 

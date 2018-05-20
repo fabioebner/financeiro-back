@@ -25,6 +25,16 @@ public class ProtocoloServico extends AbstractEntity {
     @JoinColumn(name="protocolo_servico_id")
     private Set<ProtocoloServicoCustas> custas;
 
+    public ProtocoloServico(@NotNull BigDecimal valorBase, @NotNull Long formaCalculo, @NotNull Servico servico, Set<ProtocoloServicoCustas> custas) {
+        this.valorBase = valorBase;
+        this.formaCalculo = formaCalculo;
+        this.servico = servico;
+        this.custas = custas;
+    }
+
+    public ProtocoloServico() {
+    }
+
     public BigDecimal getValorBase() {
         return valorBase;
     }

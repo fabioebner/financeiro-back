@@ -34,6 +34,15 @@ public class Protocolo {
         this.id = id;
     }
 
+
+    public Protocolo(@NotEmpty String id, @NotEmpty String natureza, @NotNull Long codigo, Set<ProtocoloServico> servicos) {
+        this.id = id;
+        this.natureza = natureza;
+        this.codigo = codigo;
+        this.criado = LocalDateTime.now();
+        this.servicos = servicos;
+    }
+
     public Protocolo() {
     }
 

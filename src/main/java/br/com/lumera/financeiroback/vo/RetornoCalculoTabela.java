@@ -22,10 +22,17 @@ public class RetornoCalculoTabela {
     private BigDecimal vlDesconto;
     private BigDecimal valor;
     private Integer qtd;
-    @JsonIgnore
     private BigDecimal vlTotal;
     private List<CalculoTabela> calculoTabela;
     private long cdFormaCalculo;
+    //Apenas para retorno ao criar um pedido
+    private Long numeroProtocolo;
+    private String natureza;
+    private String nomeServico;
+    private Long servicoId;
+    private boolean certidao;
+    @JsonIgnore
+    private String protocoloId;
 
     public String getNmCustas1() {
         return this.nmCustas1;
@@ -271,5 +278,53 @@ public class RetornoCalculoTabela {
 
     public String getTabelaCustas() {
         return this.calculoTabela.get(0).getNmTabela();
+    }
+
+    public Long getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo(Long numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+    }
+
+    public String getNatureza() {
+        return natureza;
+    }
+
+    public void setNatureza(String natureza) {
+        this.natureza = natureza;
+    }
+
+    public String getNomeServico() {
+        return nomeServico;
+    }
+
+    public void setNomeServico(String nomeServico) {
+        this.nomeServico = nomeServico;
+    }
+
+    public Long getServicoId() {
+        return servicoId;
+    }
+
+    public void setServicoId(Long servicoId) {
+        this.servicoId = servicoId;
+    }
+
+    public boolean isCertidao() {
+        return certidao;
+    }
+
+    public void setCertidao(boolean certidao) {
+        this.certidao = certidao;
+    }
+
+    public String getProtocoloId() {
+        return protocoloId;
+    }
+
+    public void setProtocoloId(String protocoloId) {
+        this.protocoloId = protocoloId;
     }
 }

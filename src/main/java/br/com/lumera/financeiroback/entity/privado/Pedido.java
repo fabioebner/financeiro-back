@@ -30,6 +30,19 @@ public class Pedido extends AbstractEntity {
     @OneToOne
     private Cliente cliente;
 
+    public Pedido() {
+    }
+
+    public Pedido( Long usuario, String identificacao, String apresentante, String apresentanteDocumento, Set<Protocolo> protocolos, Cliente cliente) {
+        this.criado = LocalDateTime.now();
+        this.usuario = usuario;
+        this.identificacao = identificacao;
+        this.apresentante = apresentante;
+        this.apresentanteDocumento = apresentanteDocumento;
+        this.protocolos = protocolos;
+        this.cliente = cliente;
+    }
+
     public LocalDateTime getCriado() {
         return criado;
     }

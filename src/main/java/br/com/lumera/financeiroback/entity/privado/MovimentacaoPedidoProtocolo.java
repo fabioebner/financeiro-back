@@ -1,13 +1,10 @@
 package br.com.lumera.financeiroback.entity.privado;
 
 import br.com.lumera.financeiroback.entity.AbstractEntity;
-import br.com.lumera.financeiroback.entity.Servico;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,7 +21,7 @@ public class MovimentacaoPedidoProtocolo extends AbstractEntity {
     @JoinColumn(name="movimentacao_pedido_protocolo_id", nullable = false)
     private Set<MovimentacaoProtocoloServico> servicos;
     @Column(name = "vl_devolucao_custa1")
-    private BigDecimal vlDevolucaoCustas1;
+    private BigDecimal vlDevolucaoCusta1;
     @Column(name = "vl_devolucao_custa2")
     private BigDecimal vlDevolucaoCusta2;
     @Column(name = "vl_devolucao_custa3")
@@ -49,7 +46,7 @@ public class MovimentacaoPedidoProtocolo extends AbstractEntity {
         this.pedido = pedido;
         this.protocolo = protocolo;
         this.servicos = servicos;
-        this.vlDevolucaoCustas1 = vlDevolucaoCustas1;
+        this.vlDevolucaoCusta1 = vlDevolucaoCustas1;
         this.vlDevolucaoCusta2 = vlDevolucaoCusta2;
         this.vlDevolucaoCusta3 = vlDevolucaoCusta3;
         this.vlDevolucaoCusta4 = vlDevolucaoCusta4;
@@ -88,12 +85,12 @@ public class MovimentacaoPedidoProtocolo extends AbstractEntity {
         this.servicos = servicos;
     }
 
-    public BigDecimal getVlDevolucaoCustas1() {
-        return vlDevolucaoCustas1;
+    public BigDecimal getVlDevolucaoCusta1() {
+        return vlDevolucaoCusta1;
     }
 
-    public void setVlDevolucaoCustas1(BigDecimal vlDevolucaoCustas1) {
-        this.vlDevolucaoCustas1 = vlDevolucaoCustas1;
+    public void setVlDevolucaoCusta1(BigDecimal vlDevolucaoCusta1) {
+        this.vlDevolucaoCusta1 = vlDevolucaoCusta1;
     }
 
     public BigDecimal getVlDevolucaoCusta2() {
@@ -166,5 +163,31 @@ public class MovimentacaoPedidoProtocolo extends AbstractEntity {
 
     public void setVlDevolucaoCusta10(BigDecimal vlDevolucaoCusta10) {
         this.vlDevolucaoCusta10 = vlDevolucaoCusta10;
+    }
+
+    public BigDecimal getVlTotalDevolucaoCustas(){
+        BigDecimal retorno = BigDecimal.ZERO;
+
+        retorno = retorno.add(vlDevolucaoCusta1);
+        retorno = retorno.add(vlDevolucaoCusta2);
+        retorno = retorno.add(vlDevolucaoCusta3);
+        retorno = retorno.add(vlDevolucaoCusta4);
+        retorno = retorno.add(vlDevolucaoCusta5);
+        retorno = retorno.add(vlDevolucaoCusta6);
+        retorno = retorno.add(vlDevolucaoCusta7);
+        retorno = retorno.add(vlDevolucaoCusta8);
+        retorno = retorno.add(vlDevolucaoCusta9);
+
+        return retorno;
+    }
+
+    public BigDecimal getVlTotalCustasProtocoloMovimentacao(){
+        BigDecimal retorno = BigDecimal.ZERO;
+        for(MovimentacaoProtocoloServico protocoloServico : servicos){
+            retorno = retorno.add(protocoloServico.getTotalCustasServico());
+        }
+
+        retorno = retorno.subtract(getVlTotalDevolucaoCustas());
+        return retorno;
     }
 }
